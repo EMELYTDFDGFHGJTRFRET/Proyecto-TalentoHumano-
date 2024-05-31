@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generar PDF</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            width: 50%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        select, input[type="checkbox"] {
+            width: calc(100% - 10px);
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button[type="submit"] {
+            width: calc(100% - 10px);
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-sizing: border-box;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Seleccionar Tabla y Atributos para Generar PDF</h1>
+
+    {% if not atributos %}
+        <form method="POST">
+            <label for="tabla_seleccionada">Selecciona una tabla:</label>
+            <select name="tabla_seleccionada" onchange="this.form.submit()">
+                <option disabled selected>Selecciona una tabla</option>
+                {% for table in tablas %}
+                    <option value="{{ table[0] }}">{{ table[0] }}</option>
+                {% endfor %}
+            </select>
+        </form>
+    {% endif %}
+
+    {% if atributos %}
+        <form method="POST">
+            <input type="hidden" name="tabla_seleccionada" value="{{ tabla_actual }}">
+            <label>Selecciona los atributos:</label>
+            {% for attr in atributos %}
+                <div>
+                    <input type="checkbox" name="atributos_seleccionados" value="{{ attr[0] }}">
+                    {{ attr[0] }}
+                </div>
+            {% endfor %}
+            <button type="submit">Generar PDF</button>
+        </form>
+    {% endif %}
+</body>
+</html>

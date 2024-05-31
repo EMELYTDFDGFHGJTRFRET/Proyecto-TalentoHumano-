@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Respaldar Base de Datos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+        .container {
+            width: 50%;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .backup-button {
+            padding: 15px 30px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            animation: pulse 1.5s infinite alternate;
+        }
+        .backup-button:hover {
+            background-color: #0056b3;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.05);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Respaldar Base de Datos</h1>
+    <div class="container">
+        <form action="{{ url_for('respaldar_bd') }}" method="post">
+            <button class="backup-button" type="submit">Respaldar Ahora</button>
+        </form>
+    </div>
+</body>
+</html>
+
