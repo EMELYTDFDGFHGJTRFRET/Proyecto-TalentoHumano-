@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurar Base de Datos</title>
+</head>
+<body>
+    <h1>Restaurar Base de Datos</h1>
+    <form action="/restaurar_bd" method="POST" enctype="multipart/form-data">
+        <label for="archivo_bak">Seleccionar archivo .bak:</label><br>
+        <input type="file" id="archivo_bak" name="archivo_bak" accept=".bak"><br><br>
+
+        <label for="nombre_sugerido">Nombre sugerido para la nueva base de datos:</label><br>
+        <input type="text" id="nombre_sugerido" name="nombre_sugerido" placeholder="Nombre de Restauración" value="G_Academica"><br><br>
+
+        <input type="submit" name="restaurar" value="Restaurar">
+    </form>
+</body>
+</html>
